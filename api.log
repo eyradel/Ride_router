@@ -1,0 +1,137 @@
+2025-05-11 19:12:52,853 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 19:12:52,853 - src.api - INFO - [api.py:70] - Optimizer initialized successfully
+2025-05-11 19:13:21,058 - src.api - INFO - [api.py:134] - Health check endpoint called
+2025-05-11 19:14:29,580 - src.api - INFO - [api.py:262] - [20250511_191429] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 19:14:29,589 - src.api - INFO - [api.py:267] - [20250511_191429] CSV file read successfully: 31 rows
+2025-05-11 19:14:29,619 - src.api - INFO - [api.py:274] - [20250511_191429] Staff data validated successfully
+2025-05-11 19:14:29,620 - src.api - INFO - [api.py:277] - [20250511_191429] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 19:14:40,750 - src.api - INFO - [api.py:288] - [20250511_191429] Clusters created successfully
+2025-05-11 19:14:40,750 - src.api - INFO - [api.py:291] - [20250511_191429] Starting route optimization
+2025-05-11 19:14:52,553 - src.api - INFO - [api.py:296] - [20250511_191429] Routes optimized successfully: 8 routes created
+2025-05-11 19:14:54,272 - src.api - INFO - [api.py:300] - [20250511_191429] Metrics calculated successfully
+2025-05-11 19:14:55,783 - src.api - INFO - [api.py:340] - [20250511_191429] Optimization completed successfully
+2025-05-11 19:14:55,783 - src.api - INFO - [api.py:352] - [20250511_191429] File handle closed
+2025-05-11 19:17:04,235 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 19:17:04,235 - src.api - INFO - [api.py:70] - Optimizer initialized successfully
+2025-05-11 20:59:13,008 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 20:59:13,008 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 21:10:00,613 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 21:10:00,614 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 21:36:30,006 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 21:36:30,006 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 21:41:30,734 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 21:41:30,734 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 21:47:15,890 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 21:47:15,890 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 22:29:33,015 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:29:33,016 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 22:31:32,058 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:31:32,058 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 22:33:48,209 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:33:48,209 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 22:36:19,595 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:36:19,595 - src.api - INFO - [api.py:75] - Optimizer initialized successfully
+2025-05-11 22:42:17,800 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:42:17,800 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 22:43:05,359 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:43:05,359 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 22:43:26,342 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:43:26,349 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 22:44:24,526 - src.api - INFO - [api.py:298] - [20250511_224424] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 22:44:24,694 - src.api - INFO - [api.py:303] - [20250511_224424] CSV file read successfully: 31 rows
+2025-05-11 22:44:24,859 - src.api - INFO - [api.py:310] - [20250511_224424] Staff data validated successfully
+2025-05-11 22:44:24,859 - src.api - INFO - [api.py:313] - [20250511_224424] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 22:44:30,955 - src.api - INFO - [api.py:324] - [20250511_224424] Clusters created successfully
+2025-05-11 22:44:30,955 - src.api - INFO - [api.py:327] - [20250511_224424] Starting route optimization
+2025-05-11 22:44:41,441 - src.api - INFO - [api.py:332] - [20250511_224424] Routes optimized successfully: 8 routes created
+2025-05-11 22:44:43,078 - src.api - INFO - [api.py:336] - [20250511_224424] Metrics calculated successfully
+2025-05-11 22:44:44,635 - src.api - INFO - [api.py:376] - [20250511_224424] Optimization completed successfully
+2025-05-11 22:44:44,635 - src.api - INFO - [api.py:388] - [20250511_224424] File handle closed
+2025-05-11 22:46:26,837 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:46:26,837 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 22:46:30,592 - src.api - INFO - [api.py:298] - [20250511_224630] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 22:46:30,595 - src.api - INFO - [api.py:303] - [20250511_224630] CSV file read successfully: 31 rows
+2025-05-11 22:46:30,610 - src.api - INFO - [api.py:310] - [20250511_224630] Staff data validated successfully
+2025-05-11 22:46:30,610 - src.api - INFO - [api.py:313] - [20250511_224630] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 22:46:36,660 - src.api - INFO - [api.py:324] - [20250511_224630] Clusters created successfully
+2025-05-11 22:46:36,660 - src.api - INFO - [api.py:327] - [20250511_224630] Starting route optimization
+2025-05-11 22:46:49,999 - src.api - INFO - [api.py:332] - [20250511_224630] Routes optimized successfully: 9 routes created
+2025-05-11 22:46:51,840 - src.api - INFO - [api.py:336] - [20250511_224630] Metrics calculated successfully
+2025-05-11 22:46:53,672 - src.api - INFO - [api.py:376] - [20250511_224630] Optimization completed successfully
+2025-05-11 22:46:53,672 - src.api - INFO - [api.py:388] - [20250511_224630] File handle closed
+2025-05-11 22:48:03,581 - src.api - INFO - [api.py:298] - [20250511_224803] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 22:48:03,596 - src.api - INFO - [api.py:303] - [20250511_224803] CSV file read successfully: 31 rows
+2025-05-11 22:48:03,614 - src.api - INFO - [api.py:310] - [20250511_224803] Staff data validated successfully
+2025-05-11 22:48:03,614 - src.api - INFO - [api.py:313] - [20250511_224803] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 22:48:09,892 - src.api - INFO - [api.py:324] - [20250511_224803] Clusters created successfully
+2025-05-11 22:48:09,892 - src.api - INFO - [api.py:327] - [20250511_224803] Starting route optimization
+2025-05-11 22:48:19,245 - src.api - INFO - [api.py:332] - [20250511_224803] Routes optimized successfully: 8 routes created
+2025-05-11 22:48:20,888 - src.api - INFO - [api.py:336] - [20250511_224803] Metrics calculated successfully
+2025-05-11 22:48:22,455 - src.api - INFO - [api.py:376] - [20250511_224803] Optimization completed successfully
+2025-05-11 22:48:22,455 - src.api - INFO - [api.py:388] - [20250511_224803] File handle closed
+2025-05-11 22:49:47,311 - src.api - INFO - [api.py:298] - [20250511_224947] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 22:49:47,311 - src.api - INFO - [api.py:303] - [20250511_224947] CSV file read successfully: 31 rows
+2025-05-11 22:49:47,330 - src.api - INFO - [api.py:310] - [20250511_224947] Staff data validated successfully
+2025-05-11 22:49:47,331 - src.api - INFO - [api.py:313] - [20250511_224947] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 22:49:53,558 - src.api - INFO - [api.py:324] - [20250511_224947] Clusters created successfully
+2025-05-11 22:49:53,558 - src.api - INFO - [api.py:327] - [20250511_224947] Starting route optimization
+2025-05-11 22:50:03,041 - src.api - INFO - [api.py:332] - [20250511_224947] Routes optimized successfully: 8 routes created
+2025-05-11 22:50:04,573 - src.api - INFO - [api.py:336] - [20250511_224947] Metrics calculated successfully
+2025-05-11 22:50:06,165 - src.api - INFO - [api.py:376] - [20250511_224947] Optimization completed successfully
+2025-05-11 22:50:06,165 - src.api - INFO - [api.py:388] - [20250511_224947] File handle closed
+2025-05-11 22:50:35,678 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 22:50:35,678 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 22:52:51,127 - src.api - INFO - [api.py:300] - [20250511_225251] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 22:52:51,127 - src.api - INFO - [api.py:305] - [20250511_225251] CSV file read successfully: 31 rows
+2025-05-11 22:52:51,152 - src.api - INFO - [api.py:312] - [20250511_225251] Staff data validated successfully
+2025-05-11 22:52:51,152 - src.api - INFO - [api.py:315] - [20250511_225251] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 22:52:57,329 - src.api - INFO - [api.py:326] - [20250511_225251] Clusters created successfully
+2025-05-11 22:52:57,329 - src.api - INFO - [api.py:329] - [20250511_225251] Starting route optimization
+2025-05-11 22:53:07,209 - src.api - INFO - [api.py:334] - [20250511_225251] Routes optimized successfully: 8 routes created
+2025-05-11 22:53:08,779 - src.api - INFO - [api.py:338] - [20250511_225251] Metrics calculated successfully
+2025-05-11 22:53:10,488 - src.api - INFO - [api.py:400] - [20250511_225251] Optimization completed successfully and saved to database
+2025-05-11 22:53:10,488 - src.api - INFO - [api.py:412] - [20250511_225251] File handle closed
+2025-05-11 22:58:07,692 - src.api - INFO - [api.py:300] - [20250511_225807] Starting CSV route optimization for file: Data.csv
+2025-05-11 22:58:07,696 - src.api - INFO - [api.py:305] - [20250511_225807] CSV file read successfully: 31 rows
+2025-05-11 22:58:07,723 - src.api - INFO - [api.py:312] - [20250511_225807] Staff data validated successfully
+2025-05-11 22:58:07,723 - src.api - INFO - [api.py:315] - [20250511_225807] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 22:58:14,712 - src.api - INFO - [api.py:326] - [20250511_225807] Clusters created successfully
+2025-05-11 22:58:14,712 - src.api - INFO - [api.py:329] - [20250511_225807] Starting route optimization
+2025-05-11 22:58:26,748 - src.api - INFO - [api.py:334] - [20250511_225807] Routes optimized successfully: 9 routes created
+2025-05-11 22:58:28,569 - src.api - INFO - [api.py:338] - [20250511_225807] Metrics calculated successfully
+2025-05-11 22:58:30,295 - src.api - INFO - [api.py:400] - [20250511_225807] Optimization completed successfully and saved to database
+2025-05-11 22:58:30,296 - src.api - INFO - [api.py:412] - [20250511_225807] File handle closed
+2025-05-11 23:00:00,836 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:00:00,836 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 23:03:47,320 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:03:47,320 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 23:08:23,471 - src.api - INFO - [api.py:300] - [20250511_230823] Starting CSV route optimization for file: Data.csv
+2025-05-11 23:08:23,475 - src.api - INFO - [api.py:305] - [20250511_230823] CSV file read successfully: 31 rows
+2025-05-11 23:08:23,495 - src.api - INFO - [api.py:312] - [20250511_230823] Staff data validated successfully
+2025-05-11 23:08:23,496 - src.api - INFO - [api.py:315] - [20250511_230823] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 23:08:30,781 - src.api - INFO - [api.py:326] - [20250511_230823] Clusters created successfully
+2025-05-11 23:08:30,781 - src.api - INFO - [api.py:329] - [20250511_230823] Starting route optimization
+2025-05-11 23:08:41,011 - src.api - INFO - [api.py:334] - [20250511_230823] Routes optimized successfully: 8 routes created
+2025-05-11 23:08:42,490 - src.api - INFO - [api.py:338] - [20250511_230823] Metrics calculated successfully
+2025-05-11 23:08:44,092 - src.api - INFO - [api.py:400] - [20250511_230823] Optimization completed successfully and saved to database
+2025-05-11 23:08:44,093 - src.api - INFO - [api.py:412] - [20250511_230823] File handle closed
+2025-05-11 23:10:39,918 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:10:39,919 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 23:13:08,832 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:13:08,833 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 23:13:38,330 - src.api - INFO - [api.py:300] - [20250511_231338] Starting CSV route optimization for file: Rider update.csv
+2025-05-11 23:13:38,333 - src.api - INFO - [api.py:305] - [20250511_231338] CSV file read successfully: 31 rows
+2025-05-11 23:13:38,344 - src.api - INFO - [api.py:312] - [20250511_231338] Staff data validated successfully
+2025-05-11 23:13:38,345 - src.api - INFO - [api.py:315] - [20250511_231338] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-11 23:13:45,702 - src.api - INFO - [api.py:326] - [20250511_231338] Clusters created successfully
+2025-05-11 23:13:45,703 - src.api - INFO - [api.py:329] - [20250511_231338] Starting route optimization
+2025-05-11 23:13:57,847 - src.api - INFO - [api.py:334] - [20250511_231338] Routes optimized successfully: 9 routes created
+2025-05-11 23:13:59,505 - src.api - INFO - [api.py:338] - [20250511_231338] Metrics calculated successfully
+2025-05-11 23:14:01,308 - src.api - INFO - [api.py:400] - [20250511_231338] Optimization completed successfully and saved to database
+2025-05-11 23:14:01,309 - src.api - INFO - [api.py:412] - [20250511_231338] File handle closed
+2025-05-11 23:17:50,069 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:17:50,070 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 23:19:18,466 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:19:18,467 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
+2025-05-11 23:20:51,696 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-11 23:20:51,697 - src.api - INFO - [api.py:78] - Optimizer initialized successfully
