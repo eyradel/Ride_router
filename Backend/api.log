@@ -1,0 +1,1460 @@
+2025-05-12 10:04:42,064 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:04:42,064 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:04:42,110 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:04:42,111 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:04:42,112 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:04:42,112 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:04:45,980 - src.api - INFO - [api.py:178] - Health check endpoint called
+2025-05-12 10:07:47,756 - src.api - ERROR - [api.py:93] - [20250512_100747] Unhandled exception: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-12 10:07:47,773 - src.api - ERROR - [api.py:94] - [20250512_100747] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 14, in register_user
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-12 10:08:40,388 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:08:40,388 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:08:40,430 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:08:40,430 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:08:40,431 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:08:40,431 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:10:41,226 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:10:41,226 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:10:41,266 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:10:41,266 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:10:41,266 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:10:41,267 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:11:09,071 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 10:13:52,335 - src.api - INFO - [api.py:336] - [20250512_101352] Starting CSV route optimization for file: Rider update.csv
+2025-05-12 10:13:52,341 - src.api - INFO - [api.py:341] - [20250512_101352] CSV file read successfully: 31 rows
+2025-05-12 10:13:52,361 - src.api - INFO - [api.py:348] - [20250512_101352] Staff data validated successfully
+2025-05-12 10:13:52,362 - src.api - INFO - [api.py:351] - [20250512_101352] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-12 10:14:00,591 - src.api - INFO - [api.py:362] - [20250512_101352] Clusters created successfully
+2025-05-12 10:14:00,592 - src.api - INFO - [api.py:365] - [20250512_101352] Starting route optimization
+2025-05-12 10:14:16,002 - src.api - INFO - [api.py:370] - [20250512_101352] Routes optimized successfully: 8 routes created
+2025-05-12 10:14:18,202 - src.api - INFO - [api.py:374] - [20250512_101352] Metrics calculated successfully
+2025-05-12 10:14:20,275 - src.api - INFO - [api.py:436] - [20250512_101352] Optimization completed successfully and saved to database
+2025-05-12 10:14:20,275 - src.api - INFO - [api.py:448] - [20250512_101352] File handle closed
+2025-05-12 10:20:04,274 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:20:04,276 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:20:04,317 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:20:04,318 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:20:04,318 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:20:04,318 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:20:12,622 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:20:12,622 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:20:12,661 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:20:12,661 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:20:12,672 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:20:12,672 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:20:22,938 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:20:22,940 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:20:22,990 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:20:22,991 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:20:22,991 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:20:22,992 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:21:35,518 - src.api - ERROR - [api.py:93] - [20250512_102135] Unhandled exception: (psycopg2.errors.UndefinedColumn) column users.mobile_number does not exist
+LINE 1: ...ers_username, users.full_name AS users_full_name, users.mobi...
+                                                             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-12 10:21:35,526 - src.api - ERROR - [api.py:94] - [20250512_102135] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column users.mobile_number does not exist
+LINE 1: ...ers_username, users.full_name AS users_full_name, users.mobi...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 14, in register_user
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column users.mobile_number does not exist
+LINE 1: ...ers_username, users.full_name AS users_full_name, users.mobi...
+                                                             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-12 10:22:12,830 - src.api - ERROR - [api.py:93] - [20250512_102212] Unhandled exception: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-12 10:22:12,833 - src.api - ERROR - [api.py:94] - [20250512_102212] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 14, in register_user
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-12 10:22:13,782 - src.api - ERROR - [api.py:93] - [20250512_102213] Unhandled exception: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-12 10:22:13,784 - src.api - ERROR - [api.py:94] - [20250512_102213] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 14, in register_user
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'user@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-12 10:22:40,484 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:22:40,484 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:22:40,547 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:22:40,548 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:22:40,548 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:22:40,548 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:22:45,200 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:22:45,200 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:22:45,235 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:22:45,235 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:22:45,235 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:22:45,237 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:23:04,761 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 10:23:05,149 - src.api - ERROR - [api.py:93] - [20250512_102305] Unhandled exception: 3 validation errors:
+  {'type': 'string_type', 'loc': ('response', 'mobile_number'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'country'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'company'), 'msg': 'Input should be a valid string', 'input': None}
+
+2025-05-12 10:23:05,149 - src.api - ERROR - [api.py:94] - [20250512_102305] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 3 validation errors:
+  {'type': 'string_type', 'loc': ('response', 'mobile_number'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'country'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'company'), 'msg': 'Input should be a valid string', 'input': None}
+
+
+2025-05-12 10:25:09,800 - src.api - ERROR - [api.py:93] - [20250512_102509] Unhandled exception: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-12 10:25:09,816 - src.api - ERROR - [api.py:94] - [20250512_102509] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 14, in register_user
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-12 10:25:49,748 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:25:49,748 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:25:49,787 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:25:49,787 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:25:49,787 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:25:49,787 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:26:08,430 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 10:26:08,797 - src.api - ERROR - [api.py:93] - [20250512_102608] Unhandled exception: 3 validation errors:
+  {'type': 'string_type', 'loc': ('response', 'mobile_number'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'country'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'company'), 'msg': 'Input should be a valid string', 'input': None}
+
+2025-05-12 10:26:08,814 - src.api - ERROR - [api.py:94] - [20250512_102608] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 3 validation errors:
+  {'type': 'string_type', 'loc': ('response', 'mobile_number'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'country'), 'msg': 'Input should be a valid string', 'input': None}
+  {'type': 'string_type', 'loc': ('response', 'company'), 'msg': 'Input should be a valid string', 'input': None}
+
+
+2025-05-12 10:27:19,281 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:27:19,281 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:27:19,340 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:27:19,340 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:27:19,340 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:27:19,340 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:27:29,880 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:27:29,880 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:27:29,915 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:27:29,915 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:27:29,915 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:27:29,915 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:29:08,206 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:29:08,206 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:29:08,249 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:29:08,249 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:29:08,249 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:29:08,249 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:29:18,435 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:29:18,435 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:29:18,491 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:29:18,491 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:29:18,491 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:29:18,491 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:29:32,581 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:29:32,581 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:29:32,637 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:29:32,637 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:29:32,637 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:29:32,637 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:41:19,387 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:41:19,388 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:41:19,486 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:41:19,487 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:41:19,487 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:41:19,488 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:43:09,042 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 10:47:03,568 - src.api - ERROR - [api.py:93] - [20250512_104703] Unhandled exception: module 'src.security' has no attribute 'authenticate_user'
+2025-05-12 10:47:03,576 - src.api - ERROR - [api.py:94] - [20250512_104703] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 87, in login_for_access_token
+    user = security.authenticate_user(db, form_data.username, form_data.password)
+AttributeError: module 'src.security' has no attribute 'authenticate_user'
+
+2025-05-12 10:47:19,747 - src.api - ERROR - [api.py:93] - [20250512_104719] Unhandled exception: module 'src.security' has no attribute 'authenticate_user'
+2025-05-12 10:47:19,747 - src.api - ERROR - [api.py:94] - [20250512_104719] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 87, in login_for_access_token
+    user = security.authenticate_user(db, form_data.username, form_data.password)
+AttributeError: module 'src.security' has no attribute 'authenticate_user'
+
+2025-05-12 10:47:43,717 - src.api - ERROR - [api.py:93] - [20250512_104743] Unhandled exception: module 'src.security' has no attribute 'authenticate_user'
+2025-05-12 10:47:43,719 - src.api - ERROR - [api.py:94] - [20250512_104743] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 87, in login_for_access_token
+    user = security.authenticate_user(db, form_data.username, form_data.password)
+AttributeError: module 'src.security' has no attribute 'authenticate_user'
+
+2025-05-12 10:48:32,898 - src.api - ERROR - [api.py:93] - [20250512_104832] Unhandled exception: module 'src.security' has no attribute 'authenticate_user'
+2025-05-12 10:48:32,898 - src.api - ERROR - [api.py:94] - [20250512_104832] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Projects\Ride\src\auth.py", line 87, in login_for_access_token
+    user = security.authenticate_user(db, form_data.username, form_data.password)
+AttributeError: module 'src.security' has no attribute 'authenticate_user'
+
+2025-05-12 10:50:55,622 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:50:55,622 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:50:55,667 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:50:55,667 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:50:55,667 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:50:55,667 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:52:10,430 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 10:52:10,430 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 10:52:10,483 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 10:52:10,483 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 10:52:10,483 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 10:52:10,483 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 10:53:03,625 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 10:58:38,827 - src.api - INFO - [api.py:336] - [20250512_105838] Starting CSV route optimization for file: Rider update.csv
+2025-05-12 10:58:38,833 - src.api - INFO - [api.py:341] - [20250512_105838] CSV file read successfully: 31 rows
+2025-05-12 10:58:38,851 - src.api - INFO - [api.py:348] - [20250512_105838] Staff data validated successfully
+2025-05-12 10:58:38,852 - src.api - INFO - [api.py:351] - [20250512_105838] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-12 10:58:46,838 - src.api - INFO - [api.py:362] - [20250512_105838] Clusters created successfully
+2025-05-12 10:58:46,838 - src.api - INFO - [api.py:365] - [20250512_105838] Starting route optimization
+2025-05-12 10:59:00,138 - src.api - INFO - [api.py:370] - [20250512_105838] Routes optimized successfully: 8 routes created
+2025-05-12 10:59:02,155 - src.api - INFO - [api.py:374] - [20250512_105838] Metrics calculated successfully
+2025-05-12 10:59:04,238 - src.api - INFO - [api.py:436] - [20250512_105838] Optimization completed successfully and saved to database
+2025-05-12 10:59:04,238 - src.api - INFO - [api.py:448] - [20250512_105838] File handle closed
+2025-05-12 10:59:57,970 - src.api - INFO - [api.py:453] - [20250512_105957] Fetching sample data
+2025-05-12 10:59:58,117 - src.api - INFO - [api.py:464] - [20250512_105957] Sample data loaded successfully: 31 records
+2025-05-12 11:06:27,355 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 11:06:27,355 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 11:06:27,400 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 11:06:27,400 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 11:06:27,401 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 11:06:27,401 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 11:06:52,737 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 11:06:52,738 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 11:06:52,785 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 11:06:52,786 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 11:06:52,786 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 11:06:52,786 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 11:09:15,364 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 11:09:15,364 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 11:09:15,424 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 11:09:15,424 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 11:09:15,425 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 11:09:15,425 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 11:09:51,569 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 11:10:39,267 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-12 11:10:39,269 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-12 11:10:39,409 - src.api - INFO - [api.py:83] - Application startup
+2025-05-12 11:10:39,409 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-12 11:10:39,409 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-12 11:10:39,409 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-12 11:11:58,943 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-12 11:12:36,329 - src.api - INFO - [api.py:336] - [20250512_111236] Starting CSV route optimization for file: Rider update.csv
+2025-05-12 11:12:36,335 - src.api - INFO - [api.py:341] - [20250512_111236] CSV file read successfully: 31 rows
+2025-05-12 11:12:36,358 - src.api - INFO - [api.py:348] - [20250512_111236] Staff data validated successfully
+2025-05-12 11:12:36,358 - src.api - INFO - [api.py:351] - [20250512_111236] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-12 11:12:43,367 - src.api - INFO - [api.py:362] - [20250512_111236] Clusters created successfully
+2025-05-12 11:12:43,367 - src.api - INFO - [api.py:365] - [20250512_111236] Starting route optimization
+2025-05-12 11:12:56,800 - src.api - INFO - [api.py:370] - [20250512_111236] Routes optimized successfully: 8 routes created
+2025-05-12 11:12:58,867 - src.api - INFO - [api.py:374] - [20250512_111236] Metrics calculated successfully
+2025-05-12 11:13:00,884 - src.api - INFO - [api.py:436] - [20250512_111236] Optimization completed successfully and saved to database
+2025-05-12 11:13:00,884 - src.api - INFO - [api.py:448] - [20250512_111236] File handle closed
+2025-05-13 09:41:44,795 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 09:41:44,797 - src.api - INFO - [api.py:106] - Optimizer initialized successfully
+2025-05-13 09:41:44,860 - src.api - INFO - [api.py:83] - Application startup
+2025-05-13 09:41:44,862 - src.api - INFO - [api.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 09:41:44,862 - src.api - INFO - [api.py:85] - Docs URL: /docs
+2025-05-13 09:41:44,862 - src.api - INFO - [api.py:86] - Redoc URL: /redoc
+2025-05-13 09:42:55,905 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-13 09:43:50,469 - src.api - INFO - [api.py:336] - [20250513_094350] Starting CSV route optimization for file: Rider update.csv
+2025-05-13 09:43:50,477 - src.api - INFO - [api.py:341] - [20250513_094350] CSV file read successfully: 31 rows
+2025-05-13 09:43:50,511 - src.api - INFO - [api.py:348] - [20250513_094350] Staff data validated successfully
+2025-05-13 09:43:50,511 - src.api - INFO - [api.py:351] - [20250513_094350] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-13 09:44:02,986 - src.api - INFO - [api.py:362] - [20250513_094350] Clusters created successfully
+2025-05-13 09:44:02,986 - src.api - INFO - [api.py:365] - [20250513_094350] Starting route optimization
+2025-05-13 09:44:12,368 - src.api - INFO - [api.py:370] - [20250513_094350] Routes optimized successfully: 8 routes created
+2025-05-13 09:44:13,656 - src.api - INFO - [api.py:374] - [20250513_094350] Metrics calculated successfully
+2025-05-13 09:44:14,931 - src.api - INFO - [api.py:436] - [20250513_094350] Optimization completed successfully and saved to database
+2025-05-13 09:44:14,931 - src.api - INFO - [api.py:448] - [20250513_094350] File handle closed
+2025-05-13 10:14:12,299 - src.api - INFO - [api.py:453] - [20250513_101412] Fetching sample data
+2025-05-13 10:14:12,400 - src.api - INFO - [api.py:464] - [20250513_101412] Sample data loaded successfully: 31 records
+2025-05-13 10:34:22,666 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 10:34:22,667 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 10:34:22,755 - main - INFO - [main.py:83] - Application startup
+2025-05-13 10:34:22,755 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 10:34:22,757 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 10:34:22,757 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 10:34:26,303 - main - INFO - [main.py:178] - Health check endpoint called
+2025-05-13 10:34:55,094 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-13 10:56:22,714 - main - INFO - [main.py:336] - [20250513_105622] Starting CSV route optimization for file: Rider update.csv
+2025-05-13 10:56:22,723 - main - INFO - [main.py:341] - [20250513_105622] CSV file read successfully: 31 rows
+2025-05-13 10:56:22,760 - main - INFO - [main.py:348] - [20250513_105622] Staff data validated successfully
+2025-05-13 10:56:22,760 - main - INFO - [main.py:351] - [20250513_105622] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-13 10:56:34,773 - main - INFO - [main.py:362] - [20250513_105622] Clusters created successfully
+2025-05-13 10:56:34,774 - main - INFO - [main.py:365] - [20250513_105622] Starting route optimization
+2025-05-13 10:56:56,008 - main - INFO - [main.py:370] - [20250513_105622] Routes optimized successfully: 8 routes created
+2025-05-13 10:56:58,062 - main - INFO - [main.py:374] - [20250513_105622] Metrics calculated successfully
+2025-05-13 10:57:00,870 - main - ERROR - [main.py:443] - [20250513_105622] Unexpected error: (psycopg2.errors.UndefinedTable) relation "optimization_results" does not exist
+LINE 1: INSERT INTO optimization_results (request_id, user_id, total...
+                    ^
+
+[SQL: INSERT INTO optimization_results (request_id, user_id, total_routes, total_passengers, total_distance, total_cost, average_route_distance, average_route_cost, average_passengers_per_route, cost_per_passenger, routes, grid_size, sigma, learning_rate) VALUES (%(request_id)s, %(user_id)s, %(total_routes)s, %(total_passengers)s, %(total_distance)s, %(total_cost)s, %(average_route_distance)s, %(average_route_cost)s, %(average_passengers_per_route)s, %(cost_per_passenger)s, %(routes)s::JSON, %(grid_size)s, %(sigma)s, %(learning_rate)s) RETURNING optimization_results.id, optimization_results.created_at]
+[parameters: {'request_id': '20250513_105622', 'user_id': 1, 'total_routes': 8, 'total_passengers': 30, 'total_distance': 434.05, 'total_cost': 1085.14, 'average_route_distance': 54.26, 'average_route_cost': 135.64, 'average_passengers_per_route': 3.8, 'cost_per_passenger': 36.17, 'routes': '{"Route 1": {"distance": 49.96, "cost": 124.9, "passengers": [{"name": "Richmond Asamoah Nkrumah", "address": "Kaneshie Police Quarters", "staff_id": ... (4395 characters truncated) ... me": "Emmanuella Fosu Nketia", "address": "Holy Family Catholic Church, Mateheko", "staff_id": "24", "latitude": 5.562766, "longitude": -0.242406}]}}', 'grid_size': 3, 'sigma': 1.0, 'learning_rate': 0.5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-13 10:57:01,034 - main - ERROR - [main.py:444] - [20250513_105622] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "optimization_results" does not exist
+LINE 1: INSERT INTO optimization_results (request_id, user_id, total...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\projects\Ride\main.py", line 433, in optimize_routes_from_csv
+    db.commit()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "optimization_results" does not exist
+LINE 1: INSERT INTO optimization_results (request_id, user_id, total...
+                    ^
+
+[SQL: INSERT INTO optimization_results (request_id, user_id, total_routes, total_passengers, total_distance, total_cost, average_route_distance, average_route_cost, average_passengers_per_route, cost_per_passenger, routes, grid_size, sigma, learning_rate) VALUES (%(request_id)s, %(user_id)s, %(total_routes)s, %(total_passengers)s, %(total_distance)s, %(total_cost)s, %(average_route_distance)s, %(average_route_cost)s, %(average_passengers_per_route)s, %(cost_per_passenger)s, %(routes)s::JSON, %(grid_size)s, %(sigma)s, %(learning_rate)s) RETURNING optimization_results.id, optimization_results.created_at]
+[parameters: {'request_id': '20250513_105622', 'user_id': 1, 'total_routes': 8, 'total_passengers': 30, 'total_distance': 434.05, 'total_cost': 1085.14, 'average_route_distance': 54.26, 'average_route_cost': 135.64, 'average_passengers_per_route': 3.8, 'cost_per_passenger': 36.17, 'routes': '{"Route 1": {"distance": 49.96, "cost": 124.9, "passengers": [{"name": "Richmond Asamoah Nkrumah", "address": "Kaneshie Police Quarters", "staff_id": ... (4395 characters truncated) ... me": "Emmanuella Fosu Nketia", "address": "Holy Family Catholic Church, Mateheko", "staff_id": "24", "latitude": 5.562766, "longitude": -0.242406}]}}', 'grid_size': 3, 'sigma': 1.0, 'learning_rate': 0.5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-13 10:57:01,036 - main - INFO - [main.py:448] - [20250513_105622] File handle closed
+2025-05-13 11:03:57,322 - main - INFO - [main.py:336] - [20250513_110357] Starting CSV route optimization for file: Rider update.csv
+2025-05-13 11:03:57,327 - main - INFO - [main.py:341] - [20250513_110357] CSV file read successfully: 31 rows
+2025-05-13 11:03:57,360 - main - INFO - [main.py:348] - [20250513_110357] Staff data validated successfully
+2025-05-13 11:03:57,361 - main - INFO - [main.py:351] - [20250513_110357] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-13 11:04:09,106 - main - INFO - [main.py:362] - [20250513_110357] Clusters created successfully
+2025-05-13 11:04:09,107 - main - INFO - [main.py:365] - [20250513_110357] Starting route optimization
+2025-05-13 11:04:22,121 - main - INFO - [main.py:370] - [20250513_110357] Routes optimized successfully: 8 routes created
+2025-05-13 11:04:23,567 - main - INFO - [main.py:374] - [20250513_110357] Metrics calculated successfully
+2025-05-13 11:04:24,984 - main - ERROR - [main.py:443] - [20250513_110357] Unexpected error: (psycopg2.errors.UndefinedTable) relation "optimization_results" does not exist
+LINE 1: INSERT INTO optimization_results (request_id, user_id, total...
+                    ^
+
+[SQL: INSERT INTO optimization_results (request_id, user_id, total_routes, total_passengers, total_distance, total_cost, average_route_distance, average_route_cost, average_passengers_per_route, cost_per_passenger, routes, grid_size, sigma, learning_rate) VALUES (%(request_id)s, %(user_id)s, %(total_routes)s, %(total_passengers)s, %(total_distance)s, %(total_cost)s, %(average_route_distance)s, %(average_route_cost)s, %(average_passengers_per_route)s, %(cost_per_passenger)s, %(routes)s::JSON, %(grid_size)s, %(sigma)s, %(learning_rate)s) RETURNING optimization_results.id, optimization_results.created_at]
+[parameters: {'request_id': '20250513_110357', 'user_id': 1, 'total_routes': 8, 'total_passengers': 30, 'total_distance': 434.05, 'total_cost': 1085.14, 'average_route_distance': 54.26, 'average_route_cost': 135.64, 'average_passengers_per_route': 3.8, 'cost_per_passenger': 36.17, 'routes': '{"Route 1": {"distance": 49.96, "cost": 124.9, "passengers": [{"name": "Richmond Asamoah Nkrumah", "address": "Kaneshie Police Quarters", "staff_id": ... (4395 characters truncated) ... me": "Emmanuella Fosu Nketia", "address": "Holy Family Catholic Church, Mateheko", "staff_id": "24", "latitude": 5.562766, "longitude": -0.242406}]}}', 'grid_size': 3, 'sigma': 1.0, 'learning_rate': 0.5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-13 11:04:24,986 - main - ERROR - [main.py:444] - [20250513_110357] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "optimization_results" does not exist
+LINE 1: INSERT INTO optimization_results (request_id, user_id, total...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\projects\Ride\main.py", line 433, in optimize_routes_from_csv
+    db.commit()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "optimization_results" does not exist
+LINE 1: INSERT INTO optimization_results (request_id, user_id, total...
+                    ^
+
+[SQL: INSERT INTO optimization_results (request_id, user_id, total_routes, total_passengers, total_distance, total_cost, average_route_distance, average_route_cost, average_passengers_per_route, cost_per_passenger, routes, grid_size, sigma, learning_rate) VALUES (%(request_id)s, %(user_id)s, %(total_routes)s, %(total_passengers)s, %(total_distance)s, %(total_cost)s, %(average_route_distance)s, %(average_route_cost)s, %(average_passengers_per_route)s, %(cost_per_passenger)s, %(routes)s::JSON, %(grid_size)s, %(sigma)s, %(learning_rate)s) RETURNING optimization_results.id, optimization_results.created_at]
+[parameters: {'request_id': '20250513_110357', 'user_id': 1, 'total_routes': 8, 'total_passengers': 30, 'total_distance': 434.05, 'total_cost': 1085.14, 'average_route_distance': 54.26, 'average_route_cost': 135.64, 'average_passengers_per_route': 3.8, 'cost_per_passenger': 36.17, 'routes': '{"Route 1": {"distance": 49.96, "cost": 124.9, "passengers": [{"name": "Richmond Asamoah Nkrumah", "address": "Kaneshie Police Quarters", "staff_id": ... (4395 characters truncated) ... me": "Emmanuella Fosu Nketia", "address": "Holy Family Catholic Church, Mateheko", "staff_id": "24", "latitude": 5.562766, "longitude": -0.242406}]}}', 'grid_size': 3, 'sigma': 1.0, 'learning_rate': 0.5}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-13 11:04:24,989 - main - INFO - [main.py:448] - [20250513_110357] File handle closed
+2025-05-13 11:05:52,016 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 11:05:52,016 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 11:05:52,143 - main - INFO - [main.py:83] - Application startup
+2025-05-13 11:05:52,143 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 11:05:52,143 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 11:05:52,145 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 11:07:59,950 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-13 11:08:23,776 - main - INFO - [main.py:300] - [20250513_110823] Starting CSV route optimization for file: Rider update.csv
+2025-05-13 11:08:23,782 - main - INFO - [main.py:305] - [20250513_110823] CSV file read successfully: 31 rows
+2025-05-13 11:08:23,813 - main - INFO - [main.py:312] - [20250513_110823] Staff data validated successfully
+2025-05-13 11:08:23,816 - main - INFO - [main.py:315] - [20250513_110823] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-13 11:08:34,419 - main - INFO - [main.py:326] - [20250513_110823] Clusters created successfully
+2025-05-13 11:08:34,421 - main - INFO - [main.py:329] - [20250513_110823] Starting route optimization
+2025-05-13 11:08:45,103 - main - INFO - [main.py:334] - [20250513_110823] Routes optimized successfully: 9 routes created
+2025-05-13 11:08:46,493 - main - INFO - [main.py:338] - [20250513_110823] Metrics calculated successfully
+2025-05-13 11:08:47,929 - main - INFO - [main.py:400] - [20250513_110823] Optimization completed successfully and saved to database
+2025-05-13 11:08:47,929 - main - INFO - [main.py:412] - [20250513_110823] File handle closed
+2025-05-13 14:14:22,780 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 14:14:22,780 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 14:14:22,834 - main - INFO - [main.py:83] - Application startup
+2025-05-13 14:14:22,835 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 14:14:22,835 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 14:14:22,836 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 14:14:45,298 - main - INFO - [main.py:178] - Health check endpoint called
+2025-05-13 16:28:51,887 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-13 18:20:22,766 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:20:22,766 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:20:22,826 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:20:22,826 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:20:22,826 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:20:22,827 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:21:53,995 - main - ERROR - [main.py:93] - [20250513_182153] Unhandled exception: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'kuwornueyramdela2000@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-05-13 18:21:54,220 - main - ERROR - [main.py:94] - [20250513_182153] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\projects\ride\backend\app\auth.py", line 19, in register_user
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\Projects\Ride\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "users" does not exist
+LINE 2: FROM users 
+             ^
+
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.username AS users_username, users.full_name AS users_full_name, users.mobile_number AS users_mobile_number, users.country AS users_country, users.company AS users_company, users.role AS users_role, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'kuwornueyramdela2000@gmail.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2025-05-13 18:23:25,136 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:23:25,137 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:23:25,185 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:23:25,185 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:23:25,186 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:23:25,186 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:23:57,775 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-13 18:23:58,157 - main - ERROR - [main.py:93] - [20250513_182358] Unhandled exception: 'Settings' object has no attribute 'SECRET_KEY'
+2025-05-13 18:23:58,162 - main - ERROR - [main.py:94] - [20250513_182358] Traceback: Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\trustedhost.py", line 36, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "D:\Projects\Ride\.venv\lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "D:\Projects\Ride\.venv\lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+  File "D:\Projects\Ride\.venv\lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\projects\ride\backend\app\auth.py", line 59, in register_user
+    verification_token = jwt.encode({"sub": str(db_user.id)}, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+AttributeError: 'Settings' object has no attribute 'SECRET_KEY'
+
+2025-05-13 18:27:49,418 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:27:49,418 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:27:49,469 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:27:49,470 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:27:49,470 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:27:49,470 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:27:53,346 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:27:53,346 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:27:53,390 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:27:53,390 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:27:53,390 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:27:53,391 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:28:45,621 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:28:45,622 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:28:45,673 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:28:45,673 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:28:45,674 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:28:45,674 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:30:48,616 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:30:48,616 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:30:48,670 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:30:48,671 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:30:48,671 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:30:48,672 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:33:47,380 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:33:47,381 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:33:47,424 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:33:47,424 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:33:47,425 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:33:47,425 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:33:51,439 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:33:51,440 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:33:51,493 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:33:51,495 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:33:51,495 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:33:51,495 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:33:56,965 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:33:56,966 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:33:57,010 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:33:57,011 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:33:57,011 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:33:57,011 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 18:34:00,768 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 18:34:00,769 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 18:34:00,813 - main - INFO - [main.py:83] - Application startup
+2025-05-13 18:34:00,813 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 18:34:00,814 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 18:34:00,814 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 19:58:50,734 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-13 21:08:51,513 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-13 21:08:51,513 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-13 21:08:51,571 - main - INFO - [main.py:83] - Application startup
+2025-05-13 21:08:51,592 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-13 21:08:51,593 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-13 21:08:51,614 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-13 21:13:18,142 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-14 08:08:05,911 - googlemaps.client - INFO - [client.py:194] - API queries_quota: 60
+2025-05-14 08:08:05,940 - main - INFO - [main.py:106] - Optimizer initialized successfully
+2025-05-14 08:08:06,067 - main - INFO - [main.py:83] - Application startup
+2025-05-14 08:08:06,067 - main - INFO - [main.py:84] - OpenAPI schema URL: /openapi.json
+2025-05-14 08:08:06,067 - main - INFO - [main.py:85] - Docs URL: /docs
+2025-05-14 08:08:06,067 - main - INFO - [main.py:86] - Redoc URL: /redoc
+2025-05-14 08:10:40,716 - passlib.handlers.bcrypt - WARNING - [bcrypt.py:622] - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Projects\Ride\.venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-14 08:11:05,192 - main - INFO - [main.py:300] - [20250514_081105] Starting CSV route optimization for file: Rider update.csv
+2025-05-14 08:11:05,200 - main - INFO - [main.py:305] - [20250514_081105] CSV file read successfully: 31 rows
+2025-05-14 08:11:05,251 - main - INFO - [main.py:312] - [20250514_081105] Staff data validated successfully
+2025-05-14 08:11:05,251 - main - INFO - [main.py:315] - [20250514_081105] Creating clusters with params: grid_size=3, sigma=1.0, learning_rate=0.5
+2025-05-14 08:11:21,030 - main - INFO - [main.py:326] - [20250514_081105] Clusters created successfully
+2025-05-14 08:11:21,030 - main - INFO - [main.py:329] - [20250514_081105] Starting route optimization
+2025-05-14 08:11:38,406 - main - INFO - [main.py:334] - [20250514_081105] Routes optimized successfully: 8 routes created
+2025-05-14 08:11:41,893 - main - INFO - [main.py:338] - [20250514_081105] Metrics calculated successfully
+2025-05-14 08:11:46,884 - main - INFO - [main.py:400] - [20250514_081105] Optimization completed successfully and saved to database
+2025-05-14 08:11:46,884 - main - INFO - [main.py:412] - [20250514_081105] File handle closed
