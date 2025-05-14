@@ -6,13 +6,16 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/rider
-      - SECRET_KEY=${SECRET_KEY}  # Change this in production
+      - DATABASE_URL=postgresql://rider:rider@db:5432/ride
+      - SECRET_KEY=${SECRET_KEY}
       - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
       - PYTHONPATH=/app
       - ENVIRONMENT=development
+      - MNOTIFY_API_KEY=${MNOTIFY_API_KEY}
+      - SENDER_ID=${SENDER_ID}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - ./data:/app/data
       - ./app:/app/app
@@ -24,13 +27,32 @@ services:
   db:
     image: postgres:15
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=rider
+      - POSTGRES_PASSWORD=rider
       - POSTGRES_DB=ride
+    
     ports:
-      - "5430:5430"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ride-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rider -d ride"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
     networks:
       - ride-network
     restart: unless-stopped
