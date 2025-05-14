@@ -6,8 +6,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ride
-      - SECRET_KEY=your-secret-key-here  # Change this in production
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/rider
+      - SECRET_KEY=${SECRET_KEY}  # Change this in production
       - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
       - PYTHONPATH=/app
       - ENVIRONMENT=development
@@ -28,7 +28,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=ride
     ports:
-      - "5432:5432"
+      - "5430:5430"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:

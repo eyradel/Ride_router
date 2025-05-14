@@ -27,12 +27,12 @@ def setup_database():
             print("Successfully connected to database")
         
         # Import models and create tables
-        from src.models import Base
+        from app.models import Base
         Base.metadata.create_all(bind=engine)
         print("Database tables created successfully!")
         
         # Create initial admin user
-        from src.create_superuser import create_superuser
+        from app.create_superuser import create_superuser
         create_superuser(
             email="admin@example.com",
             username="admin",
@@ -62,4 +62,4 @@ if __name__ == "__main__":
     setup_database()
     print("\nDatabase setup complete!")
     print("\nYou can now start the server with:")
-    print("uvicorn src.api:app --reload") 
+    print("uvicorn app.api:app --reload") 

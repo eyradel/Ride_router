@@ -1,5 +1,5 @@
-from pydantic import BaseModel, EmailStr, Field, constr, validator
-from typing import Optional, List, Dict, Any
+from pydantic import BaseModel, EmailStr, Field, StringConstraints, validator
+from typing import Optional, List, Dict, Any, Annotated
 from datetime import datetime
 from .models import UserRole
 
@@ -7,7 +7,7 @@ class UserBase(BaseModel):
     email: EmailStr
     username: str = Field(..., min_length=3, max_length=50)
     full_name: str = Field(..., min_length=2, max_length=100)
-    mobile_number: constr(min_length=10, max_length=15)  # Basic phone number validation
+    mobile_number: Annotated[str, StringConstraints(min_length=10, max_length=15)]  # Basic phone number validation
     country: str = Field(..., min_length=2, max_length=100)
     company: str = Field(..., min_length=2, max_length=100)
     role: UserRole = UserRole.STAFF
@@ -37,7 +37,7 @@ class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
     username: Optional[str] = Field(None, min_length=3, max_length=50)
     full_name: Optional[str] = Field(None, min_length=2, max_length=100)
-    mobile_number: Optional[constr(min_length=10, max_length=15)] = None
+    mobile_number: Optional[Annotated[str, StringConstraints(min_length=10, max_length=15)]] = None
     country: Optional[str] = Field(None, min_length=2, max_length=100)
     company: Optional[str] = Field(None, min_length=2, max_length=100)
     role: Optional[UserRole] = None

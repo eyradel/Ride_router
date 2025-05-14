@@ -1,5 +1,4 @@
-# Use Python 3.11 as base image
-FROM python:3.11-slim
+FROM python:3.10
 
 # Set working directory
 WORKDIR /app
@@ -25,12 +24,23 @@ COPY .python-version .
 # Create and set up data directory
 RUN mkdir -p /app/data
 
-# Create virtual environment and install dependencies using uv
+# Set default environment variables
+ENV DATABASE_URL="postgresql://postgres:postgres@db:5432/ride"
+ENV PYTHONPATH=/app
+
+# Create virtual environment and install dependencies
 RUN uv venv
-RUN uv pip install --no-cache .
-RUN uv init_db.py
+RUN . .venv/bin/activate && uv pip install --no-cache .
+
+# Create startup script
+RUN echo '#!/bin/bash\n\
+. .venv/bin/activate\n\
+python init_database.py\n\
+uvicorn main:app --host 0.0.0.0 --port 8000' > /app/start.sh && \
+chmod +x /app/start.sh
+
 # Expose port
 EXPOSE 8000
 
 # Command to run the application
-CMD ["uv", "run", "uvicorn", "main:app", "--host", "localhost", "--port", "8000"] 
+CMD ["/app/start.sh"] 

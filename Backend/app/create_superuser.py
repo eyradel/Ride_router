@@ -1,6 +1,6 @@
-from src.database import SessionLocal
-from src.models import User, UserRole
-from src.security import get_password_hash
+from app.database import SessionLocal
+from app.models import User, UserRole
+from app.security import get_password_hash
 import sys
 
 def create_superuser(
