@@ -1046,7 +1046,7 @@ def main():
         )
         
         # optimizer = StaffTransportOptimizer(google_maps_key=os.getenv("GOOGLE_MAPS_API_KEY"))
-        optimizer = staff_transport_optimizerR(google_maps_key=st.secrets["GOOGLE_MAPS_API_KEY"])
+        optimizer = StaffTransportOptimizer(google_maps_key=st.secrets["GOOGLE_MAPS_API_KEY"])
         if data_option == "Upload CSV":
             uploaded_file = st.file_uploader(
                 "Upload staff locations CSV",
